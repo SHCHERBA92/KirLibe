@@ -27,6 +27,10 @@ public class BookEntity {
 
     private int countPage;
 
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private PublishingEntity publishingEntity;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private StatusBook statusBook;
