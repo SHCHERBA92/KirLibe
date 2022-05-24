@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Setter
@@ -22,10 +23,17 @@ public class BookEntity {
 
     private String nameBook;
 
+    private String description;
+
+    private BigDecimal price;
+
+    private int countPage;
+
+    private int countBooks;
+
     @ManyToMany(mappedBy = "bookEntities", fetch = FetchType.EAGER)
     private Set<AuthorBook> authorsBook;
 
-    private int countPage;
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
@@ -35,9 +43,7 @@ public class BookEntity {
     @Column(name = "status")
     private StatusBook statusBook;
 
-    private int countBooks;
-
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "person_id", nullable = true)
     private Person person;
 }

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap.rtl.min.css">
+</head>
+<body class="row">
+<div class=" col-4 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 380px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">SberLibe</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="#" class="nav-link link-dark active" aria-current="page">
+                <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg> -->
+                <h5>Регестрация поступлений</h5>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link link-dark" aria-current="page">
+                <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg> -->
+                <h5>Зарегестрировать читателя</h5>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link link-dark" aria-current="page">
+                <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg> -->
+                <h5>Оформить книгу</h5>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                <h5>Книги на руках</h5>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                <h5>Должники</h5>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                <h5>Поиск по книге</h5>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                <h5>Поиск по Автору</h5>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-dark">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                <h5>Поиск по Издательству</h5>
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>mdo</strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" href="#">Настройки</a></li>
+            <li><a class="dropdown-item" href="#">Профиль</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Выйти</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-8">
+    <form class="">
+        <div class="align-content-center justify-content-center bg-body">
+            <h4 class="text-center">Книга : </h4>
+        </div>
+        <div class="row-cols-2 m-3 ">
+            <label for="nameBook" class="text-info">Введите наименование книги :</label>
+            <input type="text" id="nameBook" class="border-2 border-success rounded-2 form-control" required>
+            <div class="valid-tooltip">
+                Все хорошо!
+            </div>
+        </div>
+        <div class="row-cols-2 m-3" >
+            <label for="descriptionBook" class="text-info">Описание книги :</label>
+            <textarea id="descriptionBook" class="border-2 border-success rounded-2 form-control" cols="56" rows="7" required></textarea>
+            <div class="valid-tooltip">
+                Все хорошо!
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-4">
+                <label for="priceBook" class="text-info">Цена книги :</label>
+                <input type="number" step="0.01" id="priceBook" class="border-2 border-success rounded-2 w-25" placeholder="0.00" required>
+                <label for="priceBook" class="text-info">Руб</label>
+            </div>
+            <div class="col-4">
+                <label for="pageBook" class="text-info">Количество страниц :</label>
+                <input type="number" id="pageBook" class="border-2 border-success rounded-2 w-25" placeholder="0" required>
+                <label for="pageBook" class="text-info">Стр</label>
+            </div>
+            <div class="col-4">
+                <label for="countBook" class="text-info">Количество книг :</label>
+                <input type="number" id="pageBook" class="border-2 border-success rounded-2 w-25" placeholder="0" class="form-control is-valid" required>
+                <label for="countBook" class="text-info">Штук</label>
+            </div>
+        </div>
+
+        <div class="align-content-center justify-content-center bg-body mt-5">
+            <h4 class="text-center">Автор : </h4>
+        </div>
+        <div class="row m-3">
+            <div class="col-4">
+                <label for="nameAuthor" class="text-info">Иницалы автора :</label>
+                <input type="text" id="nameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Василий Николаевич" required>
+            </div>
+            <div class="col-4">
+                <label for="nameAuthor" class="text-info">Фамилия автора :</label>
+                <input type="text" id="nameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Гоголь" required>
+            </div>
+        </div>
+
+        <div class="align-content-center justify-content-center bg-body mt-5">
+            <h4 class="text-center">Издательство : </h4>
+        </div>
+        <div class="row-cols-2 m-3 ">
+            <label for="nameBook" class="text-info">Введите наименование издательского дома :</label>
+            <input type="text" id="nameBook" class="border-2 border-success rounded-2 form-control" required>
+            <div class="valid-tooltip">
+                Все хорошо!
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-8">
+                <label for="nameAuthor" class="text-info">Адресс издательского дома :</label>
+                <input type="text" id="nameAuthor" class="border-2 border-success rounded-2 form-control" required>
+            </div>
+            <div class="col-4">
+                <label for="nameAuthor" class="text-info">Контактный телефон :</label>
+                <input type="tel" id="nameAuthor" class="border-2 border-success rounded-2 form-control" required>
+            </div>
+        </div>
+
+</div>
+<div class="row align-content-center justify-content-center">
+    <button class=" col-3 btn btn-primary align-content-center justify-content-center mt-lg-5" type="submit">Зарегестрировать</button>
+</div>
+</form>
+</div>
+
+<script src="bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
