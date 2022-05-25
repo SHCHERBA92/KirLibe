@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/static/bootstrap.rtl.min.css">
 </head>
 <body class="row">
-<div class=" col-4 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 380px;">
+<div class=" col-4 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 380px">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
         <span class="fs-4">SberLibe</span>
@@ -76,14 +76,15 @@
         </ul>
     </div>
 </div>
+
 <div class="col-8">
-    <form class="">
+    <form method="post" >
         <div class="align-content-center justify-content-center bg-body">
             <h4 class="text-center">Книга : </h4>
         </div>
         <div class="row-cols-2 m-3 ">
             <label for="nameBook" class="text-info">Введите наименование книги :</label>
-            <input type="text" id="nameBook" class="border-2 border-success rounded-2 form-control" required>
+            <input type="text" name="nameBook" class="border-2 border-success rounded-2 form-control" required>
             <div class="valid-tooltip">
                 Все хорошо!
             </div>
@@ -108,7 +109,7 @@
             </div>
             <div class="col-4">
                 <label for="countBook" class="text-info">Количество книг :</label>
-                <input type="number" id="pageBook" class="border-2 border-success rounded-2 w-25" placeholder="0" class="form-control is-valid" required>
+                <input type="number" id="countBook" class="border-2 border-success rounded-2 w-25" placeholder="0" required>
                 <label for="countBook" class="text-info">Штук</label>
             </div>
         </div>
@@ -122,8 +123,8 @@
                 <input type="text" id="nameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Василий Николаевич" required>
             </div>
             <div class="col-4">
-                <label for="nameAuthor" class="text-info">Фамилия автора :</label>
-                <input type="text" id="nameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Гоголь" required>
+                <label for="lastNameAuthor" class="text-info">Фамилия автора :</label>
+                <input type="text" id="lastNameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Гоголь" required>
             </div>
         </div>
 
@@ -139,23 +140,24 @@
         </div>
         <div class="row m-3">
             <div class="col-8">
-                <label for="nameAuthor" class="text-info">Адресс издательского дома :</label>
-                <input type="text" id="nameAuthor" class="border-2 border-success rounded-2 form-control" required>
+                <label for="adressPublisher" class="text-info">Адресс издательского дома :</label>
+                <input type="text" id="adressPublisher" class="border-2 border-success rounded-2 form-control" required>
             </div>
             <div class="col-4">
-                <label for="nameAuthor" class="text-info">Контактный телефон :</label>
-                <input type="tel" id="nameAuthor" class="border-2 border-success rounded-2 form-control" required>
+                <label for="phonePublisher" class="text-info">Контактный телефон :</label>
+                <input type="tel" id="phonePublisher" class="border-2 border-success rounded-2 form-control" required>
             </div>
         </div>
 
-</div>
-<div class="row align-content-center justify-content-center">
-    <button class=" col-3 btn btn-primary align-content-center justify-content-center mt-lg-5" type="submit">Зарегестрировать</button>
-</div>
-</form>
+
+        <div class="row align-content-center justify-content-center">
+            <button class=" col-3 btn btn-primary align-content-center justify-content-center mt-lg-5" type="submit">Зарегестрировать</button>
+        </div>
+
+    </form>
 </div>
 
-<script src="bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
 
 </body>
 </html>
