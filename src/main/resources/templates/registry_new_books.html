@@ -13,51 +13,43 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a href="#" class="nav-link link-dark active" aria-current="page">
-                <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg> -->
+        <li>
+            <a href="#" class="nav-link link-dark active">
                 <h5>Регестрация поступлений</h5>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link link-dark" aria-current="page">
-                <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg> -->
+        <li>
+            <a href="#" class="nav-link link-dark">
                 <h5>Зарегестрировать читателя</h5>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link link-dark" aria-current="page">
-                <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg> -->
+        <li>
+            <a href="#" class="nav-link link-dark">
                 <h5>Оформить книгу</h5>
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                 <h5>Книги на руках</h5>
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                 <h5>Должники</h5>
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                 <h5>Поиск по книге</h5>
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
                 <h5>Поиск по Автору</h5>
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
                 <h5>Поиск по Издательству</h5>
             </a>
         </li>
@@ -78,20 +70,22 @@
 </div>
 
 <div class="col-8">
-    <form method="post" >
+
+<!--    method="post" action="/registryNewBook"-->
+    <form th:method="POST" th:action="@{/registryNewBook}" >
         <div class="align-content-center justify-content-center bg-body">
             <h4 class="text-center">Книга : </h4>
         </div>
         <div class="row-cols-2 m-3 ">
             <label for="nameBook" class="text-info">Введите наименование книги :</label>
-            <input type="text" name="nameBook" class="border-2 border-success rounded-2 form-control" required>
+            <input type="text" id="nameBook" name="nameBook" class="border-2 border-success rounded-2 form-control" required>
             <div class="valid-tooltip">
                 Все хорошо!
             </div>
         </div>
         <div class="row-cols-2 m-3" >
             <label for="descriptionBook" class="text-info">Описание книги :</label>
-            <textarea id="descriptionBook" class="border-2 border-success rounded-2 form-control" cols="56" rows="7" required></textarea>
+            <textarea id="descriptionBook" name="descriptionBook" class="border-2 border-success rounded-2 form-control" cols="56" rows="7" required></textarea>
             <div class="valid-tooltip">
                 Все хорошо!
             </div>
@@ -99,17 +93,17 @@
         <div class="row m-3">
             <div class="col-4">
                 <label for="priceBook" class="text-info">Цена книги :</label>
-                <input type="number" step="0.01" id="priceBook" class="border-2 border-success rounded-2 w-25" placeholder="0.00" required>
+                <input type="number" step="0.01" id="priceBook" name="priceBook" class="border-2 border-success rounded-2 w-25" placeholder="0.00" required>
                 <label for="priceBook" class="text-info">Руб</label>
             </div>
             <div class="col-4">
                 <label for="pageBook" class="text-info">Количество страниц :</label>
-                <input type="number" id="pageBook" class="border-2 border-success rounded-2 w-25" placeholder="0" required>
+                <input type="number" id="pageBook" name="pageBook" class="border-2 border-success rounded-2 w-25" placeholder="0" required>
                 <label for="pageBook" class="text-info">Стр</label>
             </div>
             <div class="col-4">
                 <label for="countBook" class="text-info">Количество книг :</label>
-                <input type="number" id="countBook" class="border-2 border-success rounded-2 w-25" placeholder="0" required>
+                <input type="number" id="countBook" name="countBook" class="border-2 border-success rounded-2 w-25" placeholder="0" required>
                 <label for="countBook" class="text-info">Штук</label>
             </div>
         </div>
@@ -118,13 +112,10 @@
             <h4 class="text-center">Автор : </h4>
         </div>
         <div class="row m-3">
-            <div class="col-4">
-                <label for="nameAuthor" class="text-info">Иницалы автора :</label>
-                <input type="text" id="nameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Василий Николаевич" required>
-            </div>
-            <div class="col-4">
-                <label for="lastNameAuthor" class="text-info">Фамилия автора :</label>
-                <input type="text" id="lastNameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Гоголь" required>
+            <div class="col-10">
+                <label for="nameAuthor" class="text-info">Инициалы и фамилия автора :</label>
+                <input type="text" id="nameAuthor" name="nameAuthor" class="border-2 border-success rounded-2 form-control" placeholder="Гоголь Василий Николаевич" required>
+                <label for="nameAuthor" class="text-info">Если авторов несколько, то вводите их через запятую (,)</label>
             </div>
         </div>
 
@@ -132,20 +123,20 @@
             <h4 class="text-center">Издательство : </h4>
         </div>
         <div class="row-cols-2 m-3 ">
-            <label for="nameBook" class="text-info">Введите наименование издательского дома :</label>
-            <input type="text" id="nameBook" class="border-2 border-success rounded-2 form-control" required>
+            <label for="namePublisher" class="text-info">Введите наименование издательского дома :</label>
+            <input type="text" id="namePublisher" name="namePublisher" class="border-2 border-success rounded-2 form-control" required>
             <div class="valid-tooltip">
                 Все хорошо!
             </div>
         </div>
         <div class="row m-3">
             <div class="col-8">
-                <label for="adressPublisher" class="text-info">Адресс издательского дома :</label>
-                <input type="text" id="adressPublisher" class="border-2 border-success rounded-2 form-control" required>
+                <label for="addressPublisher" class="text-info">Адресс издательского дома :</label>
+                <input type="text" id="addressPublisher" name="addressPublisher" class="border-2 border-success rounded-2 form-control" required>
             </div>
             <div class="col-4">
                 <label for="phonePublisher" class="text-info">Контактный телефон :</label>
-                <input type="tel" id="phonePublisher" class="border-2 border-success rounded-2 form-control" required>
+                <input type="tel" id="phonePublisher" name="phonePublisher" class="border-2 border-success rounded-2 form-control" required>
             </div>
         </div>
 

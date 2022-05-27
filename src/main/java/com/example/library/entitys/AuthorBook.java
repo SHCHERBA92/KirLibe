@@ -1,13 +1,14 @@
 package com.example.library.entitys;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,7 +24,14 @@ import java.util.Objects;
 @Entity
 @Table(name = "lib_author")
 public class AuthorBook {
+
+    public AuthorBook(String lastNameAuthor, String firstNameAuthor) {
+        this.lastNameAuthor = lastNameAuthor;
+        this.firstNameAuthor = firstNameAuthor;
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
     private Long id;
 

@@ -5,6 +5,8 @@ import com.example.library.repository.AuthorReposit;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class AuthorService {
@@ -21,5 +23,9 @@ public class AuthorService {
                 .findFirst().orElse(tempAuthorBook);
 
         authorReposit.saveAndFlush(authorBook);
+    }
+
+    public void addNewAuthor(List<AuthorBook> authorBooks){
+        authorReposit.saveAll(authorBooks);
     }
 }
