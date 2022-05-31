@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -25,7 +26,7 @@ public class AuthorService {
         authorReposit.saveAndFlush(authorBook);
     }
 
-    public void addNewAuthor(List<AuthorBook> authorBooks){
+    public void addNewAuthor(Set<AuthorBook> authorBooks){
         authorReposit.saveAll(authorBooks);
     }
 }

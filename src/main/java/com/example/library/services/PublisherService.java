@@ -11,6 +11,18 @@ public class PublisherService {
     private final PublisherReposit publisherReposit;
 
     public void addNewPublisher(PublishingEntity publishingEntity){
-        publisherReposit.save(publishingEntity);
+        var tempPublish = publisherReposit.findAll().contains(publishingEntity);
+        if (!tempPublish){
+            publisherReposit.save(publishingEntity);
+        }
+    }
+
+    public PublishingEntity checkNewPublisher(PublishingEntity publishingEntity){
+        var tempPublish = publisherReposit.findAll().contains(publishingEntity);
+        if (!tempPublish){
+            return publishingEntity;
+        }else {
+            return publisherReposit.findByNamePublisher(publishingEntity.getNamePublisher()).get();
+        }
     }
 }

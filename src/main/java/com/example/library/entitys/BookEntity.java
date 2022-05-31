@@ -31,7 +31,10 @@ public class BookEntity {
 
     private int countBooks;
 
-    @ManyToMany(mappedBy = "bookEntities", fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(name = "lib_author_book",
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "author_id"))
     private Set<AuthorBook> authorsBook;
 
 

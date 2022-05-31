@@ -57,7 +57,7 @@ public class RegistryBookController {
 
         bookEntity = new BookEntity();
         bookEntity.setAuthorsBook(authors);
-        bookEntity.setPublishingEntity(publishingEntity);
+//        bookEntity.setPublishingEntity(publishingEntity);
 
         bookEntity.setNameBook(nameBook);
         bookEntity.setCountBooks(countBook);
@@ -74,8 +74,11 @@ public class RegistryBookController {
 
     @PostMapping("checkRegistryBook")
     public String checkRegistryBook(Model model){
-        System.out.println(bookEntity.getNameBook());
-        return "correct_registry";
+        if (saveBook()){
+            return "redirect:/registryBook";
+        }else {
+            return null;
+        }
     }
 
     private Set<AuthorBook> getListAuthors(String nameAuthor){
@@ -86,5 +89,16 @@ public class RegistryBookController {
             String lastName = temp.stream().collect(Collectors.joining(" "));
             return new AuthorBook(sureName,lastName);
         }).collect(Collectors.toSet());
+    }
+
+    private boolean saveBook(){
+        try {
+            this.bookEntity.setPublishingEntity(publisherService.checkNewPublisher(this.publishingEntity));
+            authorService.addNewAuthor(this.authors);
+            bookService.addNewBook(this.bookEntity);
+            return true;
+        }catch (RuntimeException e){
+            return false;
+        }
     }
 }

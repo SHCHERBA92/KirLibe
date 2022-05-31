@@ -1,30 +1,28 @@
 package com.example.library.services;
 
 import com.example.library.entitys.BookEntity;
+import com.example.library.repository.AuthorReposit;
 import com.example.library.repository.BookReposit;
+import com.example.library.repository.PublisherReposit;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class BookService {
     private final BookReposit bookReposit;
+    private final AuthorReposit authorReposit;
+    private final PublisherReposit publisherReposit;
 
     public void addNewBook(BookEntity bookEntity){
-        BookEntity entity = new BookEntity();
+        var tempPublic = bookEntity.getPublishingEntity();
 
-        entity.setNameBook(bookEntity.getNameBook());
-        entity.setDescription(bookEntity.getDescription());
-        entity.setAuthorsBook(bookEntity.getAuthorsBook());
-        entity.setCountPage(bookEntity.getCountPage());
-        entity.setPublishingEntity(bookEntity.getPublishingEntity());
-        entity.setPrice(bookEntity.getPrice());
+        if (!publisherReposit.findAll().contains(tempPublic)){
+            publisherReposit.save(tempPublic);
+        }
 
-        var book = bookReposit.findAll().stream()
-                .filter(currentBook -> currentBook.equals(entity))
-                .findFirst()
-                .orElse(entity);
-
-        bookReposit.saveAndFlush(book);
+        bookReposit.save(bookEntity);
     }
 }
