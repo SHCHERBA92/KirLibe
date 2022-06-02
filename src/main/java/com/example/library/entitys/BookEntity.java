@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -55,7 +56,10 @@ public class BookEntity {
     @Column(name = "status")
     private StatusBook statusBook;
 
-    @ManyToOne
-    @JoinColumn(name = "person_id", nullable = true)
-    private Person person;
+    @ManyToMany
+    @JoinTable(name = "lib_person_book",
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "person_id")
+    )
+    private List<Person> persons;
 }

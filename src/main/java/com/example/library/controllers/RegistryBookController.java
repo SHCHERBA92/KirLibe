@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/registry_book")
 //@AllArgsConstructor
 public class RegistryBookController {
 
@@ -37,7 +37,7 @@ public class RegistryBookController {
         this.authorService = authorService;
     }
 
-    @GetMapping("registryBook")
+    @GetMapping()
     public String registryBook(Model model){
 
         return "registry_new_books";
@@ -59,7 +59,7 @@ public class RegistryBookController {
 
         model.addAttribute("book", bookEntity);
         model.addAttribute("publisher", publishingEntity);
-        model.addAttribute("author", authors);
+        model.addAttribute("authors", authors);
 
         return "correct_registry";
     }

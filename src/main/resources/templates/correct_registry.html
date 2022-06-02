@@ -75,38 +75,38 @@
     </div>
     <div class="row-cols-2 m-3 ">
         <label for="nameBook" class="text-info">Введите наименование книги :</label>
-        <h5 class="border border-3 border-primary text-center rounded-pill" id="nameBook">ggg</h5>
+        <h5 class="border border-3 border-primary text-center rounded-pill" id="nameBook" th:text="${book.getNameBook()}"></h5>
     </div>
     <div class="row-cols-2 m-3" >
         <label for="descriptionBook" class="text-info">Описание книги :</label>
-        <h5 class="border border-3 border-primary text-center rounded-pill" id="descriptionBook">ggg</h5>
+        <h5 class="border border-3 border-primary text-center rounded-pill" id="descriptionBook" th:text="${book.getDescription()}"></h5>
     </div>
     <div class="row">
         <div class="col-4">
             <label for="priceBook" class="text-info">Цена книги :</label>
-            <h5 class="border border-3 border-primary text-center rounded-pill" id="priceBook">ggg</h5>
+            <h5 class="border border-3 border-primary text-center rounded-pill" id="priceBook" th:text="${book.getPrice()}"></h5>
         </div>
         <div class="col-4">
             <label for="pageBook" class="text-info">Количество страниц :</label>
-            <h5 class="border border-3 border-primary text-center rounded-pill" id="pageBook">fdfd</h5>
+            <h5 class="border border-3 border-primary text-center rounded-pill" id="pageBook" th:text="${book.getCountPage()}"></h5>
         </div>
         <div class="col-4">
             <label for="countBook" class="text-info">Количество книг :</label>
-            <h5 class="border border-3 border-primary text-center rounded-pill" id="countBook">fdfd</h5>
+            <h5 class="border border-3 border-primary text-center rounded-pill" id="countBook" th:text="${book.getCountBooks()}"></h5>
         </div>
     </div>
 
     <div class="align-content-center justify-content-center bg-body mt-5">
         <h4 class="text-center">Автор : </h4>
     </div>
-    <div class="row m-3">
-        <div class="col-4">
-            <label for="nameAuthor" class="text-info">Инициалы автора :</label>
-            <h5 class="border border-3 border-primary text-center rounded-pill" id="nameAuthor">fdfd</h5>
-        </div>
+    <div class="row m-3" th:each="author: ${authors}">
         <div class="col-4">
             <label for="lastNameAuthor" class="text-info">Фамилия автора :</label>
-            <h5 class="border border-3 border-primary text-center rounded-pill" id="lastNameAuthor">fdfd</h5>
+            <h5 class="border border-3 border-primary text-center rounded-pill" id="lastNameAuthor" th:text="${author.getLastNameAuthor()}"></h5>
+        </div>
+        <div class="col-4">
+            <label for="nameAuthor" class="text-info">Инициалы автора :</label>
+            <h5 class="border border-3 border-primary text-center rounded-pill" id="nameAuthor" th:text="${author.getFirstNameAuthor()}"></h5>
         </div>
     </div>
 
@@ -115,24 +115,24 @@
     </div>
     <div class="row-cols-2 m-3 ">
         <label for="namePublisher" class="text-info">Введите наименование издательского дома :</label>
-        <h5 class="border border-3 border-primary text-center rounded-pill" id="namePublisher">fdfd</h5>
+        <h5 class="border border-3 border-primary text-center rounded-pill" id="namePublisher" th:text="${publisher.getNamePublisher()}"></h5>
     </div>
     <div class="row m-3">
         <div class="col-8">
             <label for="addressPublisher" class="text-info">Адресс издательского дома :</label>
-            <h5 class="border border-3 border-primary text-center rounded-pill" id="addressPublisher">fdfd</h5>
+            <h5 class="border border-3 border-primary text-center rounded-pill" id="addressPublisher" th:text="${publisher.getAddress()}"></h5>
         </div>
         <div class="col-4">
             <label for="phonePublisher" class="text-info">Контактный телефон :</label>
-            <h5 class="border border-3 border-primary text-center rounded-pill" id="phonePublisher">fdfd</h5>
+            <h5 class="border border-3 border-primary text-center rounded-pill" id="phonePublisher" th:text="${publisher.getNumberPhone()}"></h5>
         </div>
     </div>
 
 
     <div class="row align-content-center justify-content-around">
         <button class=" col-3 btn btn-warning align-content-center justify-content-center mt-lg-5" type="submit">Нет, отредактировать</button>
-        <form th:method="POST" th:action="@{checkRegistryBook}">
-            <input class=" col-3 btn btn-success align-content-center justify-content-center mt-lg-5" type="submit" >Да, всё верно</input>
+        <form th:method="POST" th:action="@{registry_book/checkRegistryBook}" class="col-3">
+            <input class="btn btn-success align-content-center justify-content-center mt-lg-5" type="submit" value="Да, всё верно">
         </form>
     </div>
 

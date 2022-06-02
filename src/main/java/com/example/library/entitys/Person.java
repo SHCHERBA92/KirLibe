@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
@@ -35,6 +36,6 @@ public class Person {
 
     private Integer numberOfStud;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "persons")
     private List<BookEntity> bookEntities;
 }
