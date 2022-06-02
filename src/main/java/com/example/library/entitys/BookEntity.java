@@ -16,6 +16,15 @@ import java.util.Set;
 @Entity
 @Table(name = "lib_books")
 public class BookEntity {
+
+    public BookEntity(String nameBook, String description, BigDecimal price, int countPage, int countBooks) {
+        this.nameBook = nameBook;
+        this.description = description;
+        this.price = price;
+        this.countPage = countPage;
+        this.countBooks = countBooks;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")

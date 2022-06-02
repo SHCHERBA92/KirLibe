@@ -16,10 +16,10 @@ public class BookService {
     private final AuthorReposit authorReposit;
     private final PublisherReposit publisherReposit;
 
-    public void addNewBook(BookEntity bookEntity){
+    public void addNewBook(BookEntity bookEntity) {
         var tempPublic = bookEntity.getPublishingEntity();
 
-        if (!publisherReposit.findAll().contains(tempPublic)){
+        if (!publisherReposit.findAll().contains(tempPublic)) {
             publisherReposit.save(tempPublic);
         }
 

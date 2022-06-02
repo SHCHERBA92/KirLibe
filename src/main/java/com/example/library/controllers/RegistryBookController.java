@@ -55,15 +55,7 @@ public class RegistryBookController {
 
         authors = getListAuthors(nameAuthor);
 
-        bookEntity = new BookEntity();
-        bookEntity.setAuthorsBook(authors);
-//        bookEntity.setPublishingEntity(publishingEntity);
-
-        bookEntity.setNameBook(nameBook);
-        bookEntity.setCountBooks(countBook);
-        bookEntity.setPrice(priceBook);
-        bookEntity.setDescription(descriptionBook);
-        bookEntity.setCountPage(pageBook);
+        bookEntity = new BookEntity(nameBook, descriptionBook,priceBook,pageBook,countBook);
 
         model.addAttribute("book", bookEntity);
         model.addAttribute("publisher", publishingEntity);
@@ -74,6 +66,7 @@ public class RegistryBookController {
 
     @PostMapping("checkRegistryBook")
     public String checkRegistryBook(Model model){
+        createCurrentBook(bookEntity, publishingEntity, authors);
         if (saveBook()){
             return "redirect:/registryBook";
         }else {
@@ -82,7 +75,7 @@ public class RegistryBookController {
     }
 
     private Set<AuthorBook> getListAuthors(String nameAuthor){
-        var authors = nameAuthor.split(",");
+        var authors = nameAuthor.split(", ");
         return Arrays.stream(authors).map(s -> {
             var temp = Arrays.stream(s.split(" ")).collect(Collectors.toList());
             String sureName = temp.remove(0);
@@ -93,12 +86,24 @@ public class RegistryBookController {
 
     private boolean saveBook(){
         try {
-            this.bookEntity.setPublishingEntity(publisherService.checkNewPublisher(this.publishingEntity));
+            publisherService.saveNewPublisher(this.publishingEntity);
             authorService.addNewAuthor(this.authors);
             bookService.addNewBook(this.bookEntity);
             return true;
         }catch (RuntimeException e){
             return false;
         }
+    }
+
+    private BookEntity createCurrentBook(BookEntity book, PublishingEntity publishingEntity, Set<AuthorBook> authors){
+        try {
+            publishingEntity = publisherService.checkNewPublisher(publishingEntity);
+            authors = authorService.checkAuthor(authors);
+            book.setPublishingEntity(publishingEntity);
+            book.setAuthorsBook(authors);
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
+        return book;
     }
 }

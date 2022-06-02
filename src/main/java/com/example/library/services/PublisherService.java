@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class PublisherService {
     private final PublisherReposit publisherReposit;
 
-    public void addNewPublisher(PublishingEntity publishingEntity){
+    public void saveNewPublisher(PublishingEntity publishingEntity){
         var tempPublish = publisherReposit.findAll().contains(publishingEntity);
         if (!tempPublish){
             publisherReposit.save(publishingEntity);
