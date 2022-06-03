@@ -1,13 +1,14 @@
 package com.example.library.controllers;
 
+import com.example.library.DTO.ConverterFactory;
 import com.example.library.DTO.PersonDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
@@ -21,13 +22,10 @@ public class RegistryPersonController {
     }
 
     @PostMapping()
-    public String registryNewPerson(@RequestParam String lastNamePerson,
-                                    @RequestParam String firstNamePerson,
-                                    @RequestParam String secondNamePerson,
-                                    @RequestParam Integer numberStudTicket,
-                                    @RequestParam String phonePerson, Model model){
-        System.out.println(lastNamePerson);
-        return null;
+    public String registryNewPerson(@ModelAttribute ("person") PersonDTO personDTO, Model model){
+
+        var person = ConverterFactory.convertPersonDTOtoEntity(personDTO);
+        return "check_new_person";
     }
 
 }

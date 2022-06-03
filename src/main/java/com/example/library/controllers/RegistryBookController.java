@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/registry_book")
-//@AllArgsConstructor
 public class RegistryBookController {
 
     private final BookService bookService;

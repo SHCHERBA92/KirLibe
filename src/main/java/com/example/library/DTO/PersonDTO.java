@@ -8,6 +8,8 @@ public class PersonDTO {
 
     private String lastNamePerson;
 
+    private String secondNamePerson;
+
     private String numberPhone;
 
     private Integer numberOfStud;
