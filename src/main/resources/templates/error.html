@@ -2,9 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка на странице</title>
+
     <link rel="stylesheet" href="/static/bootstrap.rtl.min.css">
 </head>
+<header>
+
+</header>
 <body class="row">
 <div class=" col-4 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 380px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
@@ -19,7 +25,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link active link-dark" aria-current="page">
+            <a href="#" class="nav-link link-dark" aria-current="page">
                 <h5>Зарегестрировать читателя</h5>
             </a>
         </li>
@@ -44,7 +50,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link link-dark pe-auto">
+            <a href="#" class="nav-link link-dark">
                 <h5>Поиск по Автору</h5>
             </a>
         </li>
@@ -68,44 +74,20 @@
         </ul>
     </div>
 </div>
-
 <div class="col-8">
-    <div class="align-content-center justify-content-center bg-body">
-        <h4 class="text-center">Новый читатель : </h4>
-    </div>
-    <div class="row-cols-2 m-3 ">
-        <label for="nameBook" class="text-info">Фамилия :</label>
-        <h5 th:text="${person.getFirstNamePerson()}" class="border border-3 border-primary text-center rounded-pill" id="nameBook"></h5>
-    </div>
-    <div class="row-cols-2 m-3" >
-        <label for="descriptionBook" class="text-info">Имя :</label>
-        <h5 th:text="${person.getLastNamePerson()}" class="border border-3 border-primary text-center rounded-pill" id="descriptionBook" ></h5>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <label for="priceBook" class="text-info">Отчество :</label>
-            <h5 th:text="${person.getSecondNamePerson()}" class="border border-3 border-primary text-center rounded-pill" id="priceBook" ></h5>
+    <div class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+            <h2 class="display-5 rounded-3  bg-danger">Не порядок !!!</h2>
+            <p class="lead" th:text="${exception}"></p>
         </div>
-        <div class="col-4">
-            <label for="pageBook" class="text-info">Номер студенческого :</label>
-            <h5 th:text="${person.getNumberOfStud()}" class="border border-3 border-primary text-center rounded-pill" id="pageBook" ></h5>
-        </div>
-        <div class="col-4">
-            <label for="countBook" class="text-info">Номер телефона :</label>
-            <h5 th:text="${person.getNumberPhone()}" class="border border-3 border-primary text-center rounded-pill" id="countBook" ></h5>
+        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+            <img src="/static/images/16d26320-e6a4-43e6-bb53-7f6fca8c8723.png" width="250" height="300">
         </div>
     </div>
-
-    <div class="row align-content-center justify-content-around">
-        <button class=" col-3 btn btn-warning align-content-center justify-content-center mt-lg-5" type="submit">Нет, отредактировать</button>
-        <form th:method="POST" th:action="@{ '/registry_Person/' + ${person.getNumberOfStud()} + '/add_person'}" class="col-3" >
-            <input class="btn btn-success align-content-center justify-content-center mt-lg-5" type="submit" value="Да, всё верно">
-        </form>
-    </div>
-
 </div>
 
 <script src="/static/bootstrap.min.js"></script>
 
 </body>
+
 </html>
