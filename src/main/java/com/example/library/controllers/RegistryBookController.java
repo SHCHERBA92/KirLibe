@@ -7,6 +7,7 @@ import com.example.library.services.AuthorService;
 import com.example.library.services.BookService;
 import com.example.library.services.PublisherService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,7 +68,7 @@ public class RegistryBookController {
     public String checkRegistryBook(Model model){
         createCurrentBook(bookEntity, publishingEntity, authors);
         if (saveBook()){
-            return "redirect:/registryBook";
+            return "redirect:/registry_book";
         }else {
             return null;
         }

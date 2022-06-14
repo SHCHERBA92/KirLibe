@@ -3,6 +3,7 @@ package com.example.library.services;
 import com.example.library.entitys.AuthorBook;
 import com.example.library.repository.AuthorReposit;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -42,5 +43,10 @@ public class AuthorService {
             }
         }
         return resultAuthors;
+    }
+
+    public List<AuthorBook> getPageAuthors(){
+        PageRequest pageRequest = PageRequest.of(0,5);
+        return authorReposit.findAll(pageRequest).getContent();
     }
 }
