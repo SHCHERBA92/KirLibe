@@ -13,24 +13,24 @@ import java.util.List;
 public class PublisherService {
     private final PublisherReposit publisherReposit;
 
-    public void saveNewPublisher(PublishingEntity publishingEntity){
+    public void saveNewPublisher(PublishingEntity publishingEntity) {
         var tempPublish = publisherReposit.findAll().contains(publishingEntity);
-        if (!tempPublish){
+        if (!tempPublish) {
             publisherReposit.save(publishingEntity);
         }
     }
 
-    public PublishingEntity checkNewPublisher(PublishingEntity publishingEntity){
+    public PublishingEntity checkNewPublisher(PublishingEntity publishingEntity) {
         var tempPublish = publisherReposit.findAll().contains(publishingEntity);
-        if (!tempPublish){
+        if (!tempPublish) {
             return publishingEntity;
-        }else {
+        } else {
             return publisherReposit.findByNamePublisher(publishingEntity.getNamePublisher()).get();
         }
     }
 
-    public List<PublishingEntity> getPagesOfPublishers(){
-        PageRequest pageRequest = PageRequest.of(0,5);
+    public List<PublishingEntity> getPagesOfPublishers() {
+        PageRequest pageRequest = PageRequest.of(0, 5);
         return publisherReposit.findAll(pageRequest).getContent();
     }
 }

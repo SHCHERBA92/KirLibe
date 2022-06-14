@@ -34,16 +34,6 @@ public class AuthorBook {
     @ManyToMany(mappedBy = "authorsBook", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<BookEntity> bookEntities;
 
-//    public void addBooks(BookEntity book){
-//        bookEntities.add(book);
-//        book.getAuthorsBook().add(this);
-//    }
-//
-//    public void removeBooks(BookEntity book){
-//        bookEntities.remove(book);
-//        book.getAuthorsBook().remove(this);
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

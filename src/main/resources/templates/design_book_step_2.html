@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Оформление книги</title>
+  <link rel="stylesheet" href="/static/bootstrap.rtl.min.css">
+</head>
+<body class="row">
+<div class=" col-4 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 380px">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <span class="fs-4">KirLibe</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <h5>Регестрация поступлений</h5>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <h5>Зарегестрировать читателя</h5>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark active">
+        <h5>Оформить книгу</h5>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <h5>Книги на руках</h5>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <h5>Должники</h5>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <h5>Поиск по книге</h5>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <h5>Поиск по Автору</h5>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <h5>Поиск по Издательству</h5>
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong>mdo</strong>
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+      <li><a class="dropdown-item" href="#">Настройки</a></li>
+      <li><a class="dropdown-item" href="#">Профиль</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Выйти</a></li>
+    </ul>
+  </div>
+</div>
+<div class="col-8">
+  <form class="" method="get" th:action="@{'step_2'}">
+    <div class="align-content-center justify-content-center bg-body">
+      <h4 class="text-center">Оформление книги : </h4>
+    </div>
+    <div class="row-cols-2 m-3 ">
+      <label for="nameBook" class="text-info">Введите наименование книги/Автора :</label>
+      <input type="text" id="nameBook" name="nameOfBookOrAuthor" class="border-2 border-success rounded-2 form-control" required>
+    </div>
+
+    <div class="row align-content-center justify-content-center">
+      <button class=" col-3 btn btn-primary align-content-center justify-content-center mt-lg-1" type="submit">Найти</button>
+    </div>
+  </form>
+
+  <div class="align-content-center justify-content-center bg-body mt-lg-5">
+    <h4 class="text-center">Результат поиска : </h4>
+  </div>
+  <div class="row-cols-2 ">
+    <div class="border-3 border-bottom border-success rounded-3">
+      <a class="justify-content-center align-content-center">
+        <button class="btn btn-outline-primary">
+          <h5 class="text-center text-dark">f</h5>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <div class="row m-3 mt-lg-5">
+
+    <h4 class="text-center">Возможно вы имели в виду : </h4>
+    <div class="col-4"><h4>По Книги :</h4>
+      <div class="border-3 border-bottom border-success rounded-3">
+        <a class="justify-content-center align-content-center">
+          <button class="btn btn-outline-primary">
+            <h5 class="text-center text-dark" >f</h5>
+          </button>
+        </a>
+      </div>
+    </div>
+
+
+    <div class="col-4"><h4>По Автору :</h4>
+      <div class="border-3 border-bottom border-warning rounded-3">
+        <a class="justify-content-center align-content-center">
+          <button class="btn btn-outline-primary">
+            <h5 class="text-center text-dark"></h5>
+          </button>
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<script src="/static/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

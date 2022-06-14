@@ -69,13 +69,13 @@
     </div>
 </div>
 <div class="col-8">
-    <form class="">
+    <form class="" method="get" th:action="@{'step_2'}">
         <div class="align-content-center justify-content-center bg-body">
             <h4 class="text-center">Оформление книги : </h4>
         </div>
         <div class="row-cols-2 m-3 ">
-            <label for="nameBook" class="text-info">Введите наименование книги/Автора :</label>
-            <input type="text" id="nameBook" class="border-2 border-success rounded-2 form-control" required>
+            <label for="nameBook" class="text-info">Введите наименование книги :</label>
+            <input type="text" id="nameBook" name="nameOfBookOrAuthor" class="border-2 border-success rounded-2 form-control" required>
         </div>
 
         <div class="row align-content-center justify-content-center">
@@ -123,7 +123,7 @@
 
 </div>
 
-<script src="/static/bootstrap.min.js"></script>
+<script src="/static/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

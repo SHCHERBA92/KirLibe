@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping ("/registry_Person")
+@RequestMapping("/registry_Person")
 public class RegistryPersonController {
 
-    private Person person = null ;
+    private Person person = null;
     private final PersonService personService;
 
     public RegistryPersonController(PersonService personService) {
@@ -30,13 +30,13 @@ public class RegistryPersonController {
     }
 
     @PostMapping()
-    public String checkNewPerson(@ModelAttribute ("person") PersonDTO personDTO, Model model){
+    public String checkNewPerson(@ModelAttribute("person") PersonDTO personDTO, Model model) {
         person = ConverterFactory.convertPersonDTOtoEntity(personDTO);
         return "check_new_person";
     }
 
     @PostMapping("{number}/add_person")
-    public String addNewPerson(@PathVariable Long number, @ModelAttribute ("person") PersonDTO personDTO, Model model){
+    public String addNewPerson(@PathVariable Long number, @ModelAttribute("person") PersonDTO personDTO, Model model) {
         personService.addNewPerson(person);
         //TODO: сделать страницу подтверждающую, что пользователь зарегистрирован
         return "redirect:/registry_Person";

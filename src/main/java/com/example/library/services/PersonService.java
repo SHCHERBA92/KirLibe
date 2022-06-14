@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 public class PersonService {
     private final PersonReposit personReposit;
 
-    public void addNewPerson(Person person){
-        if (personReposit.findByNumberOfStud(person.getNumberOfStud()).isPresent()){
+    public void addNewPerson(Person person) {
+        if (personReposit.findByNumberOfStud(person.getNumberOfStud()).isPresent()) {
             throw new RepeaterElements("студенческий № " + person.getNumberOfStud() + " уже зарегистрирован");
         }
         personReposit.saveAndFlush(person);

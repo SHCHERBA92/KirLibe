@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,18 +16,18 @@ import java.util.stream.Collectors;
 public class AuthorService {
     private final AuthorReposit authorReposit;
 
-    public void addNewAuthor(Set<AuthorBook> authorBooks){
+    public void addNewAuthor(Set<AuthorBook> authorBooks) {
         var tempAuthor = authorBooks.stream().map(authorBook -> {
-            if (!authorReposit.findAll().isEmpty()){
+            if (!authorReposit.findAll().isEmpty()) {
                 return authorReposit.findAll().stream().filter(authorBook1 -> authorBook1.equals(authorBook)).findFirst().orElse(authorBook);
-            }else {
+            } else {
                 return authorBook;
             }
         }).collect(Collectors.toSet());
         authorReposit.saveAll(tempAuthor);
     }
 
-    public Set<AuthorBook> checkAuthor(Set<AuthorBook> authorBook){
+    public Set<AuthorBook> checkAuthor(Set<AuthorBook> authorBook) {
         var allAuthors = authorReposit.findAll();
         var tempAuthors = authorBook.stream().collect(Collectors.toList());
         Set<AuthorBook> resultAuthors = new HashSet<>();
@@ -45,8 +44,8 @@ public class AuthorService {
         return resultAuthors;
     }
 
-    public List<AuthorBook> getPageAuthors(){
-        PageRequest pageRequest = PageRequest.of(0,5);
+    public List<AuthorBook> getPageAuthors() {
+        PageRequest pageRequest = PageRequest.of(0, 5);
         return authorReposit.findAll(pageRequest).getContent();
     }
 }
