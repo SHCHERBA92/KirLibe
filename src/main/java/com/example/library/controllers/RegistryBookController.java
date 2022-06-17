@@ -6,6 +6,7 @@ import com.example.library.entitys.PublishingEntity;
 import com.example.library.services.AuthorService;
 import com.example.library.services.DesignService;
 import com.example.library.services.PublisherService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/registry_book")
+@Log4j2
 public class RegistryBookController {
 
     private final PublisherService publisherService;
@@ -74,8 +76,8 @@ public class RegistryBookController {
     }
 
     private Set<AuthorBook> getListAuthors(String nameAuthor) {
-        var authors = nameAuthor.split(", ");
-        return Arrays.stream(authors).map(s -> {
+        var compareAuthors = nameAuthor.split(", ");
+        return Arrays.stream(compareAuthors).map(s -> {
             var temp = Arrays.stream(s.split(" ")).collect(Collectors.toList());
             String sureName = temp.remove(0);
             String lastName = temp.stream().collect(Collectors.joining(" "));
@@ -101,8 +103,7 @@ public class RegistryBookController {
             book.setPublishingEntity(publishingEntity);
             book.setAuthorsBook(authors);
         } catch (RuntimeException e) {
-            //TODO: добавить логирование
-            System.out.println(e.getMessage());
+            log.error(e.getMessage());
         }
         return book;
     }

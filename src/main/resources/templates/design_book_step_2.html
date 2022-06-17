@@ -86,11 +86,24 @@
   <div class="align-content-center justify-content-center bg-body mt-lg-5">
     <h4 class="text-center">Результат поиска : </h4>
   </div>
-  <div class="row-cols-2 ">
-    <div class="border-3 border-bottom border-success rounded-3">
+  <div class="row-cols-2 " th:if="${mapFindingBook.isEmpty()}">
+    <div class="border-3 border-bottom border-success rounded-3" >
       <a class="justify-content-center align-content-center">
         <button class="btn btn-outline-primary">
-          <h5 class="text-center text-dark">f</h5>
+          <h5 class="text-center text-dark">Не удалось найти такой книги</h5>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <div class="row align-content-center" th:unless="${mapFindingBook.isEmpty()}">
+    <div th:each="fBooks: ${mapFindingBook.keySet()}">
+      <a class="justify-content-center align-content-center" th:href="@{'step_3/' + ${fBooks.getId()}}">
+        <button class="btn btn-outline-primary">
+          <h5 class="text-center text-dark" >
+            <span th:text="'Книга - ' + ${fBooks.getName()} + '; '"></span>
+            <span th:text="'Автор - ' + ${mapFindingBook.get(fBooks)} + ' ;'"></span>
+          </h5>
         </button>
       </a>
     </div>
@@ -98,23 +111,18 @@
 
   <div class="row m-3 mt-lg-5">
 
-    <h4 class="text-center">Возможно вы имели в виду : </h4>
-    <div class="col-4"><h4>По Книги :</h4>
-      <div class="border-3 border-bottom border-success rounded-3">
-        <a class="justify-content-center align-content-center">
-          <button class="btn btn-outline-primary">
-            <h5 class="text-center text-dark" >f</h5>
-          </button>
-        </a>
-      </div>
-    </div>
+    <h4 class="text-center">Возможно вы искали : </h4>
 
-
-    <div class="col-4"><h4>По Автору :</h4>
-      <div class="border-3 border-bottom border-warning rounded-3">
-        <a class="justify-content-center align-content-center">
+    <div class="col-10"><h4>По Книги :</h4>
+      <div th:each="otherBook : ${mapOtherBooks.keySet()}" >
+        <a class="justify-content-center align-content-center" th:href="@{'step_3/' + ${otherBook.getId()}}">
           <button class="btn btn-outline-primary">
-            <h5 class="text-center text-dark"></h5>
+
+            <h5 class="text-center text-dark m-4">
+              <span th:text="'Книга - ' + ${otherBook.getName()} + '; '"></span>
+              <span th:text="'Автор - ' + ${mapOtherBooks.get(otherBook)} + ' ;'"></span>
+            </h5>
+
           </button>
         </a>
       </div>

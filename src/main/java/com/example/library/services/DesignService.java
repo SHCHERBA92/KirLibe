@@ -37,9 +37,7 @@ public class DesignService {
         var otherListOfBook = Collections.EMPTY_LIST;
 
         listOfBook = bookReposit.findAllByNameBook(nameBookOfAuthor);
-        if (listOfBook.isEmpty()) {
-            otherListOfBook = bookReposit.findAllByNameBookContaining(nameBookOfAuthor);
-        }
+        otherListOfBook = bookReposit.findAllByNameBookContaining(nameBookOfAuthor);
 
         ArrayList<List<BookEntity>> lists = new ArrayList<>();
         lists.add(listOfBook);
